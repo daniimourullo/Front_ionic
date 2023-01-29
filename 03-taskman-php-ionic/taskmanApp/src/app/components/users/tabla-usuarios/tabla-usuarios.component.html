@@ -1,0 +1,32 @@
+
+<ion-grid>
+  <ion-row>
+    <ion-col size="1" class="title"><i class='bx bx-chevrons-right' style='color:#2974de' ></i> Username</ion-col>
+    <ion-col size="2" class="title"><i class='bx bx-chevrons-right' style='color:#2974de' ></i> Nombre Completo</ion-col>
+    <ion-col size="1" class="title"><i class='bx bx-chevrons-right' style='color:#2974de' ></i> Rol</ion-col>
+    <ion-col size="0.5" class="title"></ion-col>
+    <ion-col size="0.5" class="title"></ion-col>
+    <ion-col size="0.5" class="title"></ion-col>
+    <ion-col></ion-col>
+  </ion-row>  
+  <ion-row *ngFor="let usuario of usuarios; let i = index" class="listado-usuarios">
+    <ion-col size="1" class="resultado"><i class='bx bxs-user-pin' style='color:#2974de' ></i> {{ usuario.username }}</ion-col>
+    <ion-col size="2" class="resultado"><i class='bx bxs-pencil' style='color:#2974de'  ></i> {{ usuario.nombreCompleto }}</ion-col>
+    <ion-col size="1" class="resultado"><i class='bx bxs-user-check' style='color:#2974de' ></i> {{ usuario.rol }}</ion-col>
+    <ion-col size="0.5" class="resultado">
+      <ion-button class="btn" [routerLink]="['/ver-usuario', usuario.id ]" color="success">
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+    </ion-col>    
+    <ion-col size="0.5" class="resultado">
+      <ion-button class="btn" [routerLink]="['/editar-usuario', usuario.id ]" color="warning">
+        <ion-icon name="document"></ion-icon>
+      </ion-button>
+    </ion-col>    
+    <ion-col size="0.5" class="resultado">
+      <ion-button class="btn" (click)="borrarUsuario(i)" color="danger">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-col>        
+  </ion-row>
+</ion-grid>
